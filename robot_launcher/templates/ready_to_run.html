@@ -1,0 +1,21 @@
+{% if process_running == False %}
+<div class="container" id="container">
+    <h1 class="lead">Select which process you would like to start</h1>
+    <br>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-outline-primary process" id="excel">Run Excel</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-outline-primary process" id="calc">Run Calculator</button>
+        </div>
+    </div>
+    <!-- <button id="test">TEST</button> -->
+    {% else %}
+    <div class="container">
+        <div class="alert alert-primary" role="alert">Process is currently running. You will be able to run process
+            after current one has completed.
+        </div>
+    </div>
+    {% endif %}
+</div>

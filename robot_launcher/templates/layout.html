@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    {% include 'css.html' %}
+    <script>
+    $(document).ready(function() {
+        $('#main_container').fadeIn(300);
+        // actual buttons - works for every element with 'btn' class
+        $('.process').click(function() {
+            var ele_clicked = $(this);
+            console.log(ele_clicked + ' clicked!')
+            $('#container').hide().html('<div class="spinner-border" style="width: 6rem; height: 6rem;" role="status"><span class="sr-only">Loading...</span></div>').fadeIn(600);
+            $.ajax({
+                url:'/run_process',
+                data: $(ele_clicked).attr('id'),
+                type: 'POST',
+                success: function(response) {
+                    console.log('Success. Result: ' + response);
+                    $('#container').hide().html('<div class="alert alert-success" role="alert">Process "' + $(ele_clicked).html() + '" has started.</div>').fadeIn(900);
+                    },
+                error: function(error) {
+                    console.log('Failure Error: ' + error);
+                    $('#container').hide().html('<div class="alert alert-danger" role="alert">Process "' + $(ele_clicked).html() + ' could not be started. Please refresh the page and retry."</div>').fadeIn(900);
+                }
+            });
+        });
+    });
+    </script>
+</head>
+
+<body class="bg-light">
+    <div class="main_container text-center" id="main_container" style="display:none;">
+
+        {% include 'header.html' %}
+        <hr class="my-4">
+        {% include 'ready_to_run.html' %}
+        </div>
+    </div>
+</body>
+</html>
