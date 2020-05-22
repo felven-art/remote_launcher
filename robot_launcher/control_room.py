@@ -56,11 +56,11 @@ def activity_list(token, proxies = {}):
 
 
 if __name__ == "__main__":
-    usr = 'piotr.grynczel@gds.ey.com'
-    pwd = '2vgzvnri1'
+    usr = 'mail@mail.com'
+    pwd = 'pass'
     proxies = {
-        'http': 'http://empweb1.ey.net:8080',
-        'https': 'http://empweb1.ey.net:8080'
+        'http': 'http://proxy.net:1234',
+        'https': 'http://proxy.net:1234'
     }
     auth = control_room_auth(usr=usr, pwd=pwd, proxies=proxies)
     if auth['code'] == 200:
